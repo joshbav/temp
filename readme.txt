@@ -20,6 +20,14 @@ Source: https://github.com/draios/sysdig-cloud-scripts/tree/master/agent_deploy/
 
 7. kubectl apply -n sysdig-agent -f https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-agent-daemonset-v2.yaml
 
+8. curl -sSLO https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-image-analyzer-configmap.yaml
+
+9. vi sysdig-image-analyzer-configmap.yaml   and add the endpoint URL per: https://docs.sysdig.com/en/saas-regions-and-ip-ranges.html
+
+10. kubectl apply -n sysdig-agent -f sysdig-image-analyzer-configmap.yaml
+
+11: kubectl apply -n sysdig-agent -f https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-image-analyzer-daemonset.yaml
+
 UNINSTALL DIRECTIONS
 1. kubectl delete ns sysdig-agent
 2. kubectl delete clusterrole sysdig-agent
