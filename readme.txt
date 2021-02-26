@@ -4,7 +4,7 @@ Source: https://github.com/draios/sysdig-cloud-scripts/tree/master/agent_deploy/
 
 1. kubectl create ns sysdig-agent
 
-2. FILL IN: kubectl create secret generic sysdig-agent --from-literal=access-key=<your sysdig access key> -n sysdig-agent
+2. FILL IN: kubectl -n sysdig-agent create secret generic sysdig-agent --from-literal=access-key=<your sysdig access key>
 
 3. kubectl apply -n sysdig-agent -f https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-agent-clusterrole.yaml
 
@@ -12,7 +12,11 @@ Source: https://github.com/draios/sysdig-cloud-scripts/tree/master/agent_deploy/
 
 5. kubectl create clusterrolebinding sysdig-agent --clusterrole=sysdig-agent --serviceaccount=sysdig-agent:sysdig-agent
 
-6. kubectl apply -n sysdig-agent -f https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-agent-configmap.yaml
+6. curl -sSLO https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-agent-configmap.yaml
+
+7. vi sysdig-agent-configmap.yaml  and add the correct collector URL per: https://docs.sysdig.com/en/saas-regions-and-ip-ranges.html
+
+8. kubectl apply -n sysdig-agent -f sysdig-agent-configmap.yaml
 
 7. kubectl apply -n sysdig-agent -f https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-agent-daemonset-v2.yaml
 
