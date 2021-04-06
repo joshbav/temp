@@ -1,6 +1,10 @@
-Install directions for Sysdig SaaS on K8s, as of 4-16-19
+Install directions for Sysdig on K8s, with SaaS backend, as of 2-21
 
-Source: https://github.com/draios/sysdig-cloud-scripts/tree/master/agent_deploy/kubernetes
+Main docs for vanilla K8s: https://docs.sysdig.com/en/steps-for-kubernetes--vanilla-.html
+
+Source of yaml files: https://github.com/draios/sysdig-cloud-scripts/tree/master/agent_deploy/kubernetes
+
+DIRECTIONS
 
 1. kubectl create ns sysdig-agent
 
